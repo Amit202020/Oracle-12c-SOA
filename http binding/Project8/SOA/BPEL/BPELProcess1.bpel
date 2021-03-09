@@ -1,0 +1,50 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Thu Mar 04 09:53:44 IST 2021
+  Author:  A687640
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+               targetNamespace="http://xmlns.oracle.com/Application1/Project8/BPELProcess1"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/Application1/Project8/BPELProcess1"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/http/Application1/Project8/httpService"
+         xmlns:ns2="http://www.example.org" xmlns:ui="http://xmlns.oracle.com/soa/designer">
+
+  <!--
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC
+     Set of activities coordinating the flow of messages across the
+     services integrated within this business process
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/http/Application1/Project8/httpService"
+          location="../WSDLs/httpService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <partnerLinks>
+    <partnerLink name="httpService" partnerLinkType="ns1:Request_Response_plt" myRole="Request-Response_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Receive1_Request-Response_InputVariable" messageType="ns1:request_msg_in"/>
+    <variable name="Reply1_Request-Response_OutputVariable" messageType="ns1:response_msg_out"/>
+  </variables>
+  <sequence name="main">
+    <receive name="Receive1" createInstance="yes" partnerLink="httpService" portType="ns1:Request_Response_ptt"
+             operation="Request-Response" variable="Receive1_Request-Response_InputVariable"/>
+    <assign name="Assign1">
+      <copy>
+        <from>$Receive1_Request-Response_InputVariable.request/ns2:input</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Reply1_Request-Response_OutputVariable.response/ns2:output</to>
+      </copy>
+    </assign>
+    <reply name="Reply1" partnerLink="httpService" variable="Reply1_Request-Response_OutputVariable"
+           portType="ns1:Request_Response_ptt" operation="Request-Response"/>
+  </sequence>
+</process>

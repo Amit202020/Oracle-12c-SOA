@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="teaskformproject12" ClientType="Generic">
+  <pageMap>
+    <page path="/Humantask1_TaskDetails.jspx" usageId="teaskformproject12_Humantask1_TaskDetailsPageDef"/>
+    <page path="/Humantask1_TaskNotification.jspx" usageId="teaskformproject12_Humantask1_TaskNotificationPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="teaskformproject12_Humantask1_TaskDetailsPageDef"
+          path="teaskformproject12.pageDefs.Humantask1_TaskDetailsPageDef"/>
+    <page id="teaskformproject12_Humantask1_TaskNotificationPageDef"
+          path="teaskformproject12.pageDefs.Humantask1_TaskNotificationPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="teaskformProject12_Humantask1" path="teaskformproject12.teaskformProject12_Humantask1"/>
+  </dataControlUsages>
+</Application>

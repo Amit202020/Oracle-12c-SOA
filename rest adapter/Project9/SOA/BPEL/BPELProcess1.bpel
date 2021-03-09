@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Thu Mar 04 11:06:30 IST 2021
+  Author:  A687640
+  Type: BPEL 2.0 Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+         targetNamespace="http://xmlns.oracle.com/Application1/Project9/BPELProcess1"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/Application1/Project9/BPELProcess1"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns1="json">
+
+    <!--
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC
+       Set of activities coordinating the flow of messages across the
+       services integrated within this business process
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <partnerLinks>
+        <partnerLink name="RestReference" bpelx:wadl="yes"/>
+    </partnerLinks>
+    <variables>
+        <variable name="inputVar" bpelx:json="object" />
+        <variable name="outputVar" bpelx:json="object" />
+    </variables>
+    <sequence name="main">
+        <receive name="Receive1" partnerLink="RestReference" variable="inputVar" bpelx:method="getHelloAsHtml"
+                 createInstance="yes"/>
+        <reply name="Reply1" partnerLink="RestReference" variable="outputVar" bpelx:method="getHelloAsHtml"/>
+    </sequence>
+</process>

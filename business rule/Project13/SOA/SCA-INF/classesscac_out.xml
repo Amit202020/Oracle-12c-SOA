@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>OracleRules1</loc>
+      <line/>
+      <col/>
+      <file/>
+      <name/>
+      <fix/>
+      <msg>Rule Dictionary OracleRules1 is invalid.</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Mediators/Mediator1.mplan</file>
+      <name>Mediators/Mediator1.mplan</name>
+      <fix/>
+      <msg>Transformation required for Case "OracleRules1.OracleRules1_DecisionService_1.callFunctionStateless" having different source and target part name types. Please make sure the source and target message part name are same and of same type.</msg>
+   </Fault>
+</Faults>
